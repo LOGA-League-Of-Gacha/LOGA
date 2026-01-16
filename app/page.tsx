@@ -15,6 +15,7 @@ import {
   saveUserName,
 } from "@/lib/community-storage";
 import { recordGameResult } from "@/lib/my-page-storage";
+import Footer from "@/components/Footer";
 
 const POSITIONS: Position[] = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
 
@@ -486,6 +487,9 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
