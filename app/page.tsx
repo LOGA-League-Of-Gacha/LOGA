@@ -346,14 +346,14 @@ export default function Home() {
                 onClick={() => handleRecordGameResult("win")}
                 className="px-8 py-3 rounded-lg font-bold text-white bg-green-600 hover:bg-green-700 transition-all transform hover:scale-105"
               >
-                ✓ Record Victory
+                승리 (전적 기록)
               </button>
 
               <button
                 onClick={() => handleRecordGameResult("loss")}
                 className="px-8 py-3 rounded-lg font-bold text-white bg-red-600 hover:bg-red-700 transition-all transform hover:scale-105"
               >
-                ✗ Record Defeat
+                패배 (전적 기록)
               </button>
             </div>
 
@@ -373,14 +373,14 @@ export default function Home() {
                 onClick={handleShareRoster}
                 className="px-8 py-3 rounded-lg font-bold text-white bg-lol-blue hover:bg-lol-blue-dark transition-all"
               >
-                📤 Share Your Roster
+                📤 내 로스터 공유하기
               </button>
 
               <button
                 onClick={handleOpenCommunityModal}
                 className="px-8 py-3 rounded-lg font-bold text-black bg-gradient-to-r from-lol-gold to-lol-gold-dark hover:from-lol-gold-dark hover:to-lol-gold transition-all gold-glow"
               >
-                🌟 Post to Community
+                🌟 내 로스터 자랑하기
               </button>
             </div>
 
