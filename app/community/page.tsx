@@ -30,11 +30,11 @@ export default function CommunityPage() {
     const stored = getUserName();
     if (stored) setUserName(stored);
 
-    // 실시간 업데이트: 30초마다 데이터 새로고침
+    // 실시간 업데이트: 5초마다 데이터 새로고침
     const interval = setInterval(() => {
       console.log("Auto-refreshing community data...");
       loadData();
-    }, 30000); // 30초
+    }, 5000); // 5초
 
     return () => clearInterval(interval);
   }, []);
