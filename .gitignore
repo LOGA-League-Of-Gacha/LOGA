@@ -20,6 +20,9 @@
 # production
 /build
 
+# performance optimization docs (local only)
+PERFORMANCE_OPTIMIZATION.md
+
 # misc
 .DS_Store
 *.pem
