@@ -32,6 +32,78 @@ export default function AboutPage() {
             </section>
 
             <section>
+              <h3 className="text-xl font-bold text-lol-gold mb-3">
+                롤 가챠 게임이란? (한국어 가이드)
+              </h3>
+              <p className="leading-relaxed mb-4">
+                리그 오브 가챠는 리그오브레전드 프로게이머들을 랜덤으로 뽑아
+                나만의 드림팀을 만들 수 있는 무료 롤 가챠 게임입니다. 2013년부터
+                2025년까지 LCK, LPL, 월즈 챔피언 200명 이상의 선수 데이터를
+                포함하고 있으며, 페이커, 데프트, 루키 등 레전드 선수들을 뽑을 수
+                있습니다.
+              </p>
+              <div className="bg-lol-dark/40 p-4 rounded-lg border border-lol-gold/20">
+                <h4 className="text-lg font-semibold text-lol-gold mb-3">
+                  자주 묻는 질문 (한국어)
+                </h4>
+                <div className="space-y-4 text-sm">
+                  <div>
+                    <p className="font-semibold text-white mb-1">
+                      Q: 롤 가챠 게임은 어떻게 하나요?
+                    </p>
+                    <p className="text-lol-light leading-relaxed">
+                      A: 탑, 정글, 미드, 원딜, 서포터 포지션 카드를 클릭하면
+                      랜덤으로 프로게이머가 나옵니다. 마음에 안 들면 리롤하고,
+                      좋으면 확정하세요. 5명을 모두 뽑으면 롤 드림팀이
+                      완성됩니다!
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white mb-1">
+                      Q: 페이커나 월즈 우승팀도 나오나요?
+                    </p>
+                    <p className="text-lol-light leading-relaxed">
+                      A: 네! 2013-2024년 모든 월즈 챔피언이 포함되어 있습니다.
+                      T1 페이커, DRX 데프트 등 레전드 선수들을 뽑을 수 있고,
+                      실제 우승 라인업을 맞추면 특별한 축하 애니메이션이
+                      나옵니다.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white mb-1">
+                      Q: 롤 프로게이머 가챠 게임은 무료인가요?
+                    </p>
+                    <p className="text-lol-light leading-relaxed">
+                      A: 완전 무료입니다! 무제한으로 선수를 뽑을 수 있고,
+                      커뮤니티에 로스터를 공유하거나 통계를 기록하는 모든 기능이
+                      무료로 제공됩니다.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white mb-1">
+                      Q: LCK, LPL 선수들이 모두 나오나요?
+                    </p>
+                    <p className="text-lol-light leading-relaxed">
+                      A: LCK(한국), LPL(중국), LEC(유럽), LCS(북미) 모든 주요
+                      리그의 선수들이 포함되어 있습니다. 월즈와 MSI 국제 대회
+                      참가 선수들도 뽑을 수 있습니다.
+                    </p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-white mb-1">
+                      Q: 누구에게 추천하나요?
+                    </p>
+                    <p className="text-lol-light leading-relaxed">
+                      A: 18-35세 롤 e스포츠를 좋아하는 분들, 프로게이머 팬, 가챠
+                      게임을 즐기시는 분들께 완벽합니다. 점심시간이나 퇴근 후
+                      5분이면 드림팀을 만들 수 있어요!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section>
               <h3 className="text-xl font-bold text-white mb-3">Features</h3>
               <ul className="list-disc list-inside space-y-2 leading-relaxed">
                 <li>
@@ -129,6 +201,101 @@ export default function AboutPage() {
             </section>
 
             <section>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Frequently Asked Questions (FAQ)
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    What is League of Gacha game?
+                  </h4>
+                  <p className="leading-relaxed">
+                    League of Gacha is a free online gacha-style game where you
+                    randomly summon real League of Legends professional players
+                    from 2013 to 2025 to build your dream esports team roster.
+                    Perfect for LOL esports fans who want to create fantasy
+                    teams with legendary players like Faker, Deft, and Rookie.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    How do I play League of Gacha?
+                  </h4>
+                  <p className="leading-relaxed">
+                    Simply click on a position card (TOP, JUNGLE, MID, ADC,
+                    SUPPORT) to summon a random professional player. You can
+                    reroll if you don't like the result, then confirm to add
+                    them to your roster. Build a complete 5-player team and try
+                    to create championship-winning lineups!
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    Can I get World Championship winners in the game?
+                  </h4>
+                  <p className="leading-relaxed">
+                    Yes! League of Gacha includes all Worlds championship
+                    winners from 2013 to 2024. When you successfully assemble a
+                    real championship-winning roster (same team, same year), the
+                    game automatically recognizes it with a special celebration
+                    animation.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    Which regions are included?
+                  </h4>
+                  <p className="leading-relaxed">
+                    The game features players from LCK (Korea), LPL (China), LEC
+                    (Europe), LCS (North America), and international tournaments
+                    including Worlds and MSI. You can build teams with players
+                    from any region.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    Who should play this game?
+                  </h4>
+                  <p className="leading-relaxed">
+                    League of Gacha is perfect for League of Legends esports
+                    fans aged 18-35 who enjoy gacha mechanics, fantasy team
+                    building, and LOL competitive scene. Great for casual gaming
+                    during breaks or after work, taking only 5 minutes to create
+                    a roster.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    Is League of Gacha free to play?
+                  </h4>
+                  <p className="leading-relaxed">
+                    Yes, League of Gacha is completely free to play with no
+                    hidden costs. You can summon unlimited players, share
+                    rosters with the community, and track your statistics
+                    without any payment.
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-lol-gold mb-2">
+                    Can I share my dream team with others?
+                  </h4>
+                  <p className="leading-relaxed">
+                    Absolutely! After building your roster, you can share it
+                    with the League of Gacha community. Other players can view
+                    your team composition, and you can see the creative rosters
+                    others have built.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section>
               <h3 className="text-xl font-bold text-white mb-3">Contact</h3>
               <p className="leading-relaxed">
                 For questions, feedback, or suggestions, please contact us
@@ -138,7 +305,8 @@ export default function AboutPage() {
 
             <section className="pt-4 border-t border-lol-gold/20">
               <p className="text-sm text-lol-light/70">
-                Last Updated: January 2025
+                Last Updated: January 2026 - Latest player data includes 2025
+                season
               </p>
             </section>
           </div>

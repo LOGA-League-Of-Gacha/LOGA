@@ -12,6 +12,7 @@ import {
   m as motion,
   AnimatePresence,
 } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // 동적 import로 초기 번들 크기 감소
 const GachaModal = dynamic(() => import("@/components/GachaModal"), {
@@ -40,6 +41,7 @@ import Footer from "@/components/Footer";
 const POSITIONS: Position[] = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
 
 export default function Home() {
+  const { language, t } = useLanguage();
   const [roster, setRoster] = useState<UserRoster>({
     id: "",
     createdAt: Date.now(),
@@ -248,11 +250,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="text-4xl font-bold text-white mb-4">
-              Build Your Dream LoL Team
+              {t("mainTitle")}
             </h1>
             <p className="text-lol-light text-lg max-w-2xl mx-auto">
-              Summon legendary League of Legends pro players and create your
-              ultimate championship roster
+              {t("mainDescription")}
             </p>
             {isRosterComplete && (
               <motion.button
@@ -266,69 +267,75 @@ export default function Home() {
             )}
           </motion.div>
 
-          {/* Roster Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8 px-4 py-6">
-            {POSITIONS.map((position, index) => (
-              <motion.div
-                key={position}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="overflow-visible"
-              >
-                <PlayerCard
-                  player={
-                    (roster[
-                      position.toLowerCase() as keyof UserRoster
-                    ] as Player) || null
-                  }
-                  position={position}
-                  onClick={() => handleSummon(position)}
-                />
-              </motion.div>
-            ))}
-          </div>
+          {/* Roster Grid Section */}
+          <section aria-label="Player Roster" className="py-6">
+            <h2 className="sr-only">League of Legends Player Roster</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8 px-4">
+              {POSITIONS.map((position, index) => (
+                <motion.div
+                  key={position}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="overflow-visible"
+                >
+                  <PlayerCard
+                    player={
+                      (roster[
+                        position.toLowerCase() as keyof UserRoster
+                      ] as Player) || null
+                    }
+                    position={position}
+                    onClick={() => handleSummon(position)}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </section>
 
-          {/* Global Summon Buttons */}
+          {/* Summon Actions Section */}
           {!isRosterComplete && (
-            <motion.div
-              className="flex flex-col sm:flex-row justify-center gap-4"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <button
-                onClick={() => {
-                  // Find first empty position
-                  const emptyPosition = POSITIONS.find(
-                    (pos) => !roster[pos.toLowerCase() as keyof UserRoster]
-                  );
-                  if (emptyPosition) {
-                    handleSummon(emptyPosition);
-                  }
-                }}
-                className="px-8 py-3 rounded-lg font-bold text-lg text-white bg-lol-blue hover:bg-lol-blue-dark transition-all transform hover:scale-105"
+            <section aria-label="Summon Actions" className="pb-8">
+              <h2 className="sr-only">Summon Players</h2>
+              <motion.div
+                className="flex flex-col sm:flex-row justify-center gap-4"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.5 }}
               >
-                <img
-                  src="/select.svg"
-                  alt="Select All"
-                  className="inline h-6 w-6 mr-2"
-                />{" "}
-                Select One Player
-              </button>
+                <button
+                  onClick={() => {
+                    // Find first empty position
+                    const emptyPosition = POSITIONS.find(
+                      (pos) => !roster[pos.toLowerCase() as keyof UserRoster]
+                    );
+                    if (emptyPosition) {
+                      handleSummon(emptyPosition);
+                    }
+                  }}
+                  className="px-8 py-3 rounded-lg font-bold text-lg text-white bg-lol-blue hover:bg-lol-blue-dark transition-all transform hover:scale-105"
+                >
+                  <img
+                    src="/select.svg"
+                    alt="Summon single League of Legends pro player icon for random gacha selection"
+                    className="inline h-6 w-6 mr-2"
+                  />{" "}
+                  {t("selectOne")}
+                </button>
 
-              <button
-                onClick={handleSummonAll}
-                className="px-12 py-4 rounded-lg font-bold text-xl text-black bg-gradient-to-r from-lol-gold to-lol-gold-dark hover:from-lol-gold-dark hover:to-lol-gold transition-all gold-glow transform hover:scale-105"
-              >
-                <img
-                  src="/select.svg"
-                  alt="Select All"
-                  className="inline h-6 w-6 mr-2"
-                />
-                Select All Players
-              </button>
-            </motion.div>
+                <button
+                  onClick={handleSummonAll}
+                  className="px-12 py-4 rounded-lg font-bold text-xl text-black bg-gradient-to-r from-lol-gold to-lol-gold-dark hover:from-lol-gold-dark hover:to-lol-gold transition-all gold-glow transform hover:scale-105"
+                >
+                  <img
+                    src="/select.svg"
+                    alt="Summon all five League of Legends pro players icon to complete roster instantly"
+                    className="inline h-6 w-6 mr-2"
+                  />
+                  {t("selectAll")}
+                </button>
+              </motion.div>
+            </section>
           )}
 
           {/* Championship Badge */}
@@ -346,13 +353,15 @@ export default function Home() {
                   {roster.championship.year} {roster.championship.season || ""}{" "}
                   {roster.championship.league}{" "}
                   {roster.championship.type === "winner"
-                    ? "CHAMPIONS"
-                    : "RUNNERS-UP"}
+                    ? t("champions")
+                    : t("runnersUp")}
                   !
                 </div>
                 <div className="text-lol-light">
-                  You've assembled the legendary {roster.championship.team}{" "}
-                  roster!
+                  {t("championshipComplete").replace(
+                    "{team}",
+                    roster.championship.team
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -371,14 +380,14 @@ export default function Home() {
                   onClick={() => handleRecordGameResult("win")}
                   className="px-8 py-3 rounded-lg font-bold text-white bg-green-600 hover:bg-green-700 transition-all transform hover:scale-105"
                 >
-                  승리 (전적 기록)
+                  {t("recordWin")}
                 </button>
 
                 <button
                   onClick={() => handleRecordGameResult("loss")}
                   className="px-8 py-3 rounded-lg font-bold text-white bg-red-600 hover:bg-red-700 transition-all transform hover:scale-105"
                 >
-                  패배 (전적 기록)
+                  {t("recordLoss")}
                 </button>
               </div>
 
@@ -398,14 +407,14 @@ export default function Home() {
                   onClick={handleShareRoster}
                   className="px-8 py-3 rounded-lg font-bold text-white bg-lol-blue hover:bg-lol-blue-dark transition-all"
                 >
-                  📤 내 로스터 공유하기
+                  📤 {t("shareLink")}
                 </button>
 
                 <button
                   onClick={handleOpenCommunityModal}
                   className="px-8 py-3 rounded-lg font-bold text-black bg-gradient-to-r from-lol-gold to-lol-gold-dark hover:from-lol-gold-dark hover:to-lol-gold transition-all gold-glow"
                 >
-                  🌟 내 로스터 자랑하기
+                  🌟 {t("shareCommunity")}
                 </button>
               </div>
 
