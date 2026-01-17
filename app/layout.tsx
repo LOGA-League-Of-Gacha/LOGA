@@ -6,6 +6,7 @@ import AdBanner from "@/components/AdBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MicrosoftClarity from "@/components/MicrosoftClarity";
 import StructuredData from "@/components/StructuredData";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,16 @@ export const metadata: Metadata = {
     "드림팀",
     "LCK 선수",
     "LPL 선수",
+    "롤 프로게이머 가챠",
+    "롤 프로게이머 랜덤",
+    "리그오브레전드 가챠",
+    "롤 선수 뽑기",
+    "롤 가챠 게임",
+    "롤 랜덤 게임",
+    "페이커 가챠",
+    "LCK 가챠",
+    "롤 올스타",
+    "롤 드림팀",
   ],
   authors: [{ name: "League of Gacha Team" }],
   creator: "League of Gacha",
@@ -146,11 +157,22 @@ export default function RootLayout({
             url: "https://league-of-gacha.pages.dev",
           }}
         />
+        <StructuredData
+          type="VideoGame"
+          data={{
+            name: "League of Gacha - LOL Pro Player Gacha Game",
+            description:
+              "Free online gacha game where you summon real League of Legends pro players from 2013-2025 to build your dream esports team",
+            url: "https://league-of-gacha.pages.dev",
+          }}
+        />
         <StructuredData type="WebSite" data={{}} />
         <StructuredData type="Organization" data={{}} />
-        <Navigation />
-        <main>{children}</main>
-        {/* <AdBanner /> */}
+        <LanguageProvider>
+          <Navigation />
+          <main>{children}</main>
+          {/* <AdBanner /> */}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { Player } from "@/types";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { getTranslations, getLanguage } from "@/lib/i18n";
 

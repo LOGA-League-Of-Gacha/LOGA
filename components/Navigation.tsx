@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navigation() {
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <>
@@ -33,15 +35,39 @@ export default function Navigation() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex gap-4">
+            <div className="hidden md:flex gap-4 items-center">
+              {/* Language Toggle */}
+              <div className="flex gap-1 bg-lol-dark-lighter rounded-lg p-1">
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1.5 rounded text-sm font-semibold transition-all ${
+                    language === "en"
+                      ? "bg-lol-gold text-black"
+                      : "text-lol-light hover:text-white"
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => setLanguage("ko")}
+                  className={`px-3 py-1.5 rounded text-sm font-semibold transition-all ${
+                    language === "ko"
+                      ? "bg-lol-gold text-black"
+                      : "text-lol-light hover:text-white"
+                  }`}
+                >
+                  KO
+                </button>
+              </div>
+
               <Link href="/my-page">
                 <button className="px-4 py-2 rounded-lg bg-lol-dark-lighter border border-lol-gold/30 text-lol-light hover:text-lol-gold hover:border-lol-gold/60 transition-all">
-                  내 전적
+                  {t("myPage")}
                 </button>
               </Link>
               <Link href="/community">
                 <button className="px-4 py-2 rounded-lg bg-lol-dark-lighter border border-lol-gold/30 text-lol-light hover:text-lol-gold hover:border-lol-gold/60 transition-all">
-                  로스터 자랑
+                  {t("community")}
                 </button>
               </Link>
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Player } from "@/types";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { getTranslations, getLanguage } from "@/lib/i18n";
 
 interface PlayerCardProps {
@@ -70,7 +70,7 @@ export default function PlayerCard({
               {/* <div className="text-2xl">🏆</div> */}
               <img
                 src="/worlds.svg"
-                alt="Champion Trophy"
+                alt="League of Legends Worlds Championship trophy icon - golden cup symbolizing world champion title"
                 className="w-6 h-6"
               />
             </div>
@@ -135,7 +135,7 @@ export default function PlayerCard({
                   <div>
                     <img
                       src="/worlds.svg"
-                      alt="Champion Banner"
+                      alt="Worlds Championship winner badge - global tournament champion icon"
                       className="h-6 w-6 sm:h-10 sm:w-10 mb-1 sm:mb-2"
                     />
                   </div>
@@ -144,7 +144,7 @@ export default function PlayerCard({
                   <div>
                     <img
                       src="/lck.svg"
-                      alt="Champion Banner"
+                      alt="LCK League of Legends Champions Korea trophy icon - Korean league winner badge"
                       className="h-6 w-6 sm:h-10 sm:w-10 mb-1 sm:mb-2"
                     />
                   </div>
@@ -153,7 +153,7 @@ export default function PlayerCard({
                   <div>
                     <img
                       src="/lpl.svg"
-                      alt="Champion Banner"
+                      alt="LPL League of Legends Pro League China trophy icon - Chinese league winner badge"
                       className="h-6 w-6 sm:h-10 sm:w-10 mb-1 sm:mb-2"
                     />
                   </div>
@@ -162,7 +162,7 @@ export default function PlayerCard({
                   <div>
                     <img
                       src="/lec.webp"
-                      alt="Champion Banner"
+                      alt="LEC League of Legends European Championship trophy icon - European league winner badge"
                       className="h-6 w-5 sm:h-10 sm:w-8 mb-1 sm:mb-2"
                     />
                   </div>
@@ -172,7 +172,7 @@ export default function PlayerCard({
                   <div>
                     <img
                       src="/msi.svg"
-                      alt="Champion Banner"
+                      alt="MSI Mid-Season Invitational trophy icon - international tournament winner badge"
                       className="h-6 w-6 sm:h-10 sm:w-10 mb-1 sm:mb-2"
                     />
                   </div>
