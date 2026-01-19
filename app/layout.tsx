@@ -20,50 +20,106 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "League of Gacha - Build Your Dream LoL Team",
-    template: "%s | League of Gacha",
+    default: "롤 가챠 게임 - LoL Roster Gacha | 롤 프로게이머 드림팀",
+    template: "%s | 롤 가챠 - League of Gacha",
   },
   description:
-    "롤 프로게이머 드림팀을 만드세요! 리그오브레전드 가챠 게임. LCK, LPL, 월즈 챔피언들을 뽑고 랜덤 로스터를 구성하세요. Create your ultimate League of Legends roster with legendary players from 2013-2025.",
+    "롤 프로게이머 가챠 게임! 페이커, 데프트, 루키 등 200명 이상의 선수로 드림팀 구성. Build your dream LoL team with Faker, Deft, Rookie! Free League of Legends gacha game featuring 200+ pro players from LCK, LPL, LEC, Worlds, MSI 2013-2025.",
   keywords: [
+    // 한국어 핵심 키워드 (국내 SEO 우선)
+    "롤 가챠",
+    "롤 가챠 게임",
+    "롤 프로게이머 가챠",
+    "롤 프로게이머",
+    "롤 선수 뽑기",
+    "롤 드림팀",
+    "롤 랜덤 게임",
+    "롤 로스터",
+    "리그오브레전드 가챠",
+    "리그오브레전드 게임",
+    "롤 게임",
+    "프로게이머 가챠",
+    "프로게이머 뽑기",
+    "페이커 가챠",
+    "롤 올스타",
+    "롤 선수",
+    "LCK 가챠",
+    "LCK 선수",
+    "LPL 선수",
+    "월즈 챔피언",
+    "월즈 우승",
+    "롤 월즈",
+    "롤 MSI",
+    "T1 가챠",
+    "Gen.G 가챠",
+    "롤 팀 만들기",
+    "페이커",
+    "데프트",
+    "루키",
+    "쇼메이커",
+
+    // English keywords (international SEO)
+    "League of Legends gacha",
+    "LoL gacha game",
+    "LoL roster builder",
+    "League of Legends roster",
+    "LoL pro players",
+    "LoL dream team",
+    "League of Legends team builder",
+    "LoL random game",
+    "esports gacha",
+    "pro player gacha",
+    "Faker gacha",
+    "LCK players",
+    "LPL players",
+    "LEC players",
+    "Worlds champions",
+    "MSI champions",
+    "T1 roster",
+    "Gen.G roster",
+    "League of Legends game",
+    "LoL esports game",
+    "free LoL game",
+    "League roster game",
+    "LoL team simulator",
+    "esports roster builder",
+
+    // Player names (international search)
+    "Faker",
+    "Deft",
+    "Rookie",
+    "Chovy",
+    "Showmaker",
+    "Uzi",
+    "Perkz",
+    "Caps",
+    "Rekkles",
+    "Doublelift",
+
+    // Teams
+    "T1",
+    "Gen.G",
+    "DRX",
+    "JDG",
+    "EDG",
+    "G2",
+    "Fnatic",
+    "Cloud9",
+
+    // General terms
     "League of Legends",
     "LoL",
     "Gacha",
     "Roster Builder",
     "Pro Players",
     "Esports",
-    "T1",
-    "Gen.G",
-    "Faker",
     "LCK",
     "LPL",
     "LEC",
+    "LCS",
     "Worlds",
     "MSI",
     "Dream Team",
-    "리그오브레전드",
-    "리그오브 레전드",
-    "롤",
-    "로스터",
-    "프로게이머",
-    "롤 프로게이머",
-    "롤 가챠",
-    "롤 랜덤",
-    "월즈",
-    "월즈드래프트",
-    "드림팀",
-    "LCK 선수",
-    "LPL 선수",
-    "롤 프로게이머 가챠",
-    "롤 프로게이머 랜덤",
-    "리그오브레전드 가챠",
-    "롤 선수 뽑기",
-    "롤 가챠 게임",
-    "롤 랜덤 게임",
-    "페이커 가챠",
-    "LCK 가챠",
-    "롤 올스타",
-    "롤 드림팀",
   ],
   authors: [{ name: "League of Gacha Team" }],
   creator: "League of Gacha",
@@ -76,29 +132,36 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://league-of-gacha.pages.dev/"),
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": "/",
+      "ko-KR": "/",
+      "en-GB": "/",
+      "zh-CN": "/",
+    },
   },
   openGraph: {
     type: "website",
     locale: "ko_KR",
+    alternateLocale: ["en_US", "en_GB", "zh_CN"],
     url: "https://league-of-gacha.pages.dev/",
-    title: "League of Gacha - Build Your Dream LoL Team",
+    title: "롤 가챠 게임 - LoL Roster Gacha | 롤 프로게이머 드림팀",
     description:
-      "롤 프로게이머 가챠 게임! LCK, LPL 선수들로 드림팀을 구성하고 월즈 챔피언 로스터를 만드세요. Create your ultimate League of Legends roster with legendary players from 2013-2025.",
-    siteName: "League of Gacha",
+      "롤 프로게이머 가챠 게임! 페이커, 데프트, 루키 등 200명 이상의 LCK, LPL, LEC, LCS 프로게이머로 나만의 드림팀을 만들어보세요. 월즈 우승자와 MSI 챔피언 포함! Create your ultimate League of Legends roster with 200+ pro players!",
+    siteName: "롤 가챠 게임 - LoL Roster Gacha",
     images: [
       {
         url: "https://league-of-gacha.pages.dev/opengraph_IMG.jpg",
         width: 1200,
         height: 630,
-        alt: "League of Gacha - Build Your Dream Team",
+        alt: "롤 가챠 게임 - LoL Roster Gacha",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "League of Gacha - Build Your Dream LoL Team",
+    title: "롤 가챠 게임 - LoL Roster Gacha | 롤 프로게이머 드림팀",
     description:
-      "롤 프로게이머 가챠 게임! LCK, LPL 선수들로 드림팀을 구성하고 월즈 챔피언 로스터를 만드세요. Create your ultimate League of Legends roster with legendary players from 2013-2025.",
+      "롤 프로게이머 가챠 게임! 페이커, 데프트, 루키 등 200명 이상의 LCK, LPL, LEC, LCS 프로게이머로 나만의 드림팀을 만들어보세요. 월즈 우승자와 MSI 챔피언 포함!",
     images: ["https://league-of-gacha.pages.dev/opengraph_IMG.jpg"],
     creator: "@leagueofgacha",
   },
@@ -135,6 +198,42 @@ export default function RootLayout({
         <meta name="google-adsense-account" content="ca-pub-6192776695660842" />
         <link rel="icon" href="/log.png" />
         <link rel="apple-touch-icon" href="/lol.webp" />
+        {/* hreflang tags for international SEO */}
+        <link
+          rel="alternate"
+          hrefLang="ko"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="ko-KR"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="en-US"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="en-GB"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="zh"
+          href="https://league-of-gacha.pages.dev/"
+        />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://league-of-gacha.pages.dev/"
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6192776695660842"
