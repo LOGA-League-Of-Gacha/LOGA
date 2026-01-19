@@ -51,7 +51,7 @@ export default function StructuredData({ type, data }: StructuredDataProps) {
           "@type": "Organization",
           name: "League of Gacha",
           url: "https://league-of-gacha.pages.dev",
-          logo: "https://league-of-gacha.pages.dev/lol.webp",
+          logo: "https://league-of-gacha.pages.dev/log.png",
           sameAs: ["https://twitter.com/leagueofgacha"],
         };
 

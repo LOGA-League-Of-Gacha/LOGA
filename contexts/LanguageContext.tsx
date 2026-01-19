@@ -13,10 +13,12 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  showWorldsAnimation: boolean;
+  setShowWorldsAnimation: (show: boolean) => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
-  undefined
+  undefined,
 );
 
 const translations = {
@@ -40,6 +42,13 @@ const translations = {
     recordLoss: "Record Loss",
     shareCommunity: "Share to Community",
     shareLink: "Share Link",
+    confirm: "Confirm",
+    reroll: "Reroll",
+    findingPlayers: "Found your player!",
+
+    // Settings
+    worldsAnimation: "Worlds Winner Animation",
+    worldsAnimationDesc: "Show special animation for Worlds champions",
 
     // Community
     enterName: "Enter your name",
@@ -91,6 +100,13 @@ const translations = {
     recordLoss: "패배 기록",
     shareCommunity: "커뮤니티에 공유",
     shareLink: "링크 공유",
+    confirm: "확인",
+    reroll: "다시 뽑기",
+    findingPlayers: "당신의 선수를 찾았습니다!",
+
+    // Settings
+    worldsAnimation: "월즈 우승자 애니메이션",
+    worldsAnimationDesc: "월즈 우승자의 특별한 애니메이션 보기",
 
     // Community
     enterName: "이름을 입력하세요",
@@ -126,6 +142,8 @@ const translations = {
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>("en");
+  const [showWorldsAnimation, setShowWorldsAnimationState] =
+    useState<boolean>(true);
 
   // Load language from localStorage on mount
   useEffect(() => {
@@ -137,6 +155,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const browserLang = navigator.language;
       setLanguageState(browserLang.startsWith("ko") ? "ko" : "en");
     }
+
+    // Load Worlds animation setting
+    const worldsAnimSaved = localStorage.getItem("showWorldsAnimation");
+    if (worldsAnimSaved !== null) {
+      setShowWorldsAnimationState(worldsAnimSaved === "true");
+    }
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -144,12 +168,25 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("language", lang);
   };
 
+  const setShowWorldsAnimation = (show: boolean) => {
+    setShowWorldsAnimationState(show);
+    localStorage.setItem("showWorldsAnimation", show.toString());
+  };
+
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.en] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        t,
+        showWorldsAnimation,
+        setShowWorldsAnimation,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

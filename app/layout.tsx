@@ -133,7 +133,7 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <meta name="google-adsense-account" content="ca-pub-6192776695660842" />
-        <link rel="icon" href="/lol.webp" />
+        <link rel="icon" href="/log.png" />
         <link rel="apple-touch-icon" href="/lol.webp" />
         <script
           async
