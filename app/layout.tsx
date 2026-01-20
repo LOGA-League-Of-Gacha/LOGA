@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   description:
     "롤 프로게이머 가챠 게임! 페이커, 데프트, 루키 등 200명 이상의 선수로 드림팀 구성. Build your dream LoL team with Faker, Deft, Rookie! Free League of Legends gacha game featuring 200+ pro players from LCK, LPL, LEC, Worlds, MSI 2013-2025.",
   keywords: [
+    // 서비스 브랜드명
+    "Loga",
+    "로가",
+    "League of Gacha",
+
     // 한국어 핵심 키워드 (국내 SEO 우선)
     "롤 가챠",
     "롤 가챠 게임",
@@ -177,13 +182,13 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "8vf3whLt3aqJawoiSkCtfju1tLZxJX3WLrrO3LQWEbQ",
+    google: "VGKmHiudNwz3Aceo0E9IhnNkoBU_CpfdvD0awITg7CA",
     other: {
-      "naver-site-verification": "f3039f0f5df4f43034c0f6719a3b67fd79584a68",
+      "naver-site-verification": "ca719484484805b173e7bee61e3ad53dfbcc50ac",
     },
   },
   other: {
-    "google-site-verification": "8vf3whLt3aqJawoiSkCtfju1tLZxJX3WLrrO3LQWEbQ",
+    "google-site-verification": "VGKmHiudNwz3Aceo0E9IhnNkoBU_CpfdvD0awITg7CA",
   },
 };
 
