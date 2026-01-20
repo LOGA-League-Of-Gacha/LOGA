@@ -1381,7 +1381,7 @@ export const EXTENDED_PLAYERS: Player[] = [
   {
     id: "piglet_2013",
     name: "Piglet",
-    realName: "천승훈",
+    realName: "채광진",
     position: "ADC",
     year: 2013,
     teamShort: "SKT",
