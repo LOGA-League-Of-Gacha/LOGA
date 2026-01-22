@@ -107,16 +107,6 @@ _Share your dream team with other fans_
 
 ## 📦 Tech Stack
 
-npm run build
-
-# 프로덕션 서버 실행
-
-npm start
-
-```
-
-## 📦 Tech Stack
-
 <div align="center">
 
 | Category        | Technologies                                                                                                                                                              |
@@ -375,6 +365,6 @@ This project is for **educational and fan purposes only**. Not affiliated with o
 
 **Made with ⚡ by League of Legends fans**
 
-[🌐 Live Demo](https://league-of-gacha.pages.dev) | [📝 Report Bug](https://github.com/yourusername/lol-roster-gacha/issues) | [✨ Request Feature](https://github.com/yourusername/lol-roster-gacha/issues)
+[🌐 Live Demo](https://league-of-gacha.pages.dev) | [📝 Report Bug](https://github.com/LOGA-League-Of-Gacha/LOGA/issues) | [✨ Request Feature](https://github.com/LOGA-League-Of-Gacha/LOGA/issues)
 
 </div>
