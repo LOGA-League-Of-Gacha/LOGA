@@ -43,7 +43,11 @@ import {
   getUserName,
   saveUserName,
 } from "@/lib/community-storage";
-import { recordGameResult, getBgmMuted, setBgmMuted } from "@/lib/my-page-storage";
+import {
+  recordGameResult,
+  getBgmMuted,
+  setBgmMuted,
+} from "@/lib/my-page-storage";
 import Footer from "@/components/Footer";
 
 const POSITIONS: Position[] = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
@@ -152,7 +156,8 @@ export default function Home() {
 
     // Try to play immediately (may be blocked by browser)
     if (!isBgmMuted) {
-      mainBgmRef.current.play()
+      mainBgmRef.current
+        .play()
         .then(() => {
           audioInitialized = true;
           document.removeEventListener("click", handleInteraction);
