@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Player, Position, UserRoster } from "@/types";
 import { getRandomPlayer } from "@/data/players";
@@ -43,7 +43,7 @@ import {
   getUserName,
   saveUserName,
 } from "@/lib/community-storage";
-import { recordGameResult } from "@/lib/my-page-storage";
+import { recordGameResult, getBgmMuted, setBgmMuted } from "@/lib/my-page-storage";
 import Footer from "@/components/Footer";
 
 const POSITIONS: Position[] = ["TOP", "JUNGLE", "MID", "ADC", "SUPPORT"];
@@ -71,6 +71,118 @@ export default function Home() {
   const [communityUserName, setCommunityUserName] = useState("");
   const [communityMessage, setCommunityMessage] = useState("");
   const [gameResultMessage, setGameResultMessage] = useState("");
+  const [isBgmMuted, setIsBgmMuted] = useState(false);
+
+  // Background music refs
+  const mainBgmRef = useRef<HTMLAudioElement | null>(null);
+  const pickBgmRef = useRef<HTMLAudioElement | null>(null);
+  const cardBgmRef = useRef<HTMLAudioElement | null>(null);
+
+  // Load BGM muted setting on mount
+  useEffect(() => {
+    const savedMuted = getBgmMuted();
+    setIsBgmMuted(savedMuted);
+  }, []);
+
+  // Toggle BGM mute
+  const toggleBgmMute = () => {
+    const newMuted = !isBgmMuted;
+    setIsBgmMuted(newMuted);
+    setBgmMuted(newMuted);
+
+    // Mute/unmute all audio
+    if (mainBgmRef.current) {
+      mainBgmRef.current.muted = newMuted;
+      if (newMuted) {
+        mainBgmRef.current.pause();
+      } else if (!isGachaOpen && !isMultiGachaOpen) {
+        mainBgmRef.current.play().catch(console.log);
+      }
+    }
+    if (pickBgmRef.current) {
+      pickBgmRef.current.muted = newMuted;
+    }
+    if (cardBgmRef.current) {
+      cardBgmRef.current.muted = newMuted;
+    }
+  };
+
+  // Initialize background music
+  useEffect(() => {
+    // Main BGM - preload metadata only for faster initial load
+    const mainAudio = new Audio();
+    mainAudio.src = "/log_bgm.mp3";
+    mainAudio.preload = "metadata"; // Only preload metadata, not full file
+    mainAudio.loop = true;
+    mainAudio.volume = 0.3;
+    mainAudio.muted = isBgmMuted;
+    mainBgmRef.current = mainAudio;
+
+    // Pick BGM - preload auto for immediate playback when needed
+    const pickAudio = new Audio();
+    pickAudio.src = "/pick_bgm.mp3";
+    pickAudio.preload = "auto"; // Preload fully for instant playback
+    pickAudio.loop = false;
+    pickAudio.volume = 0.3;
+    pickAudio.muted = isBgmMuted;
+    pickBgmRef.current = pickAudio;
+
+    // Card BGM - preload auto for seamless transition
+    const cardAudio = new Audio();
+    cardAudio.src = "/card_bgm.mp3";
+    cardAudio.preload = "auto"; // Preload fully for instant playback
+    cardAudio.loop = false;
+    cardAudio.volume = 0.3;
+    cardAudio.muted = isBgmMuted;
+    cardBgmRef.current = cardAudio;
+
+    let audioInitialized = false;
+
+    // Play main BGM on first user interaction (only if not muted)
+    const handleInteraction = () => {
+      if (!audioInitialized && mainBgmRef.current && !isBgmMuted) {
+        mainBgmRef.current.play().catch((error) => {
+          console.log("Audio autoplay prevented:", error);
+        });
+        audioInitialized = true;
+        document.removeEventListener("click", handleInteraction);
+        document.removeEventListener("keydown", handleInteraction);
+      }
+    };
+
+    // Try to play immediately (may be blocked by browser)
+    if (!isBgmMuted) {
+      mainBgmRef.current.play()
+        .then(() => {
+          audioInitialized = true;
+          document.removeEventListener("click", handleInteraction);
+          document.removeEventListener("keydown", handleInteraction);
+        })
+        .catch(() => {
+          // If autoplay is blocked, wait for user interaction
+          console.log("Autoplay blocked, waiting for user interaction");
+          document.addEventListener("click", handleInteraction);
+          document.addEventListener("keydown", handleInteraction);
+        });
+    }
+
+    return () => {
+      if (mainBgmRef.current) {
+        mainBgmRef.current.pause();
+        mainBgmRef.current.currentTime = 0;
+      }
+      if (pickBgmRef.current) {
+        pickBgmRef.current.pause();
+        pickBgmRef.current.currentTime = 0;
+      }
+      if (cardBgmRef.current) {
+        cardBgmRef.current.pause();
+        cardBgmRef.current.currentTime = 0;
+      }
+      document.removeEventListener("click", handleInteraction);
+      document.removeEventListener("keydown", handleInteraction);
+    };
+  }, []);
 
   // Load saved username on mount
   useEffect(() => {
@@ -115,6 +227,19 @@ export default function Home() {
   }, [roster]);
 
   const handleSummon = (position: Position) => {
+    // Stop main BGM and play pick BGM
+    if (mainBgmRef.current && !mainBgmRef.current.paused) {
+      mainBgmRef.current.pause();
+      console.log("Main BGM stopped");
+    }
+    if (pickBgmRef.current) {
+      pickBgmRef.current.currentTime = 0;
+      pickBgmRef.current.play().catch((error) => {
+        console.log("Pick BGM play failed:", error);
+      });
+      console.log("Pick BGM started");
+    }
+
     setSelectedPosition(position);
 
     // Get excluded player IDs (already in roster)
@@ -138,6 +263,23 @@ export default function Home() {
         [selectedPosition.toLowerCase()]: currentPlayer,
       }));
     }
+
+    // Stop pick/card BGMs and resume main BGM
+    if (pickBgmRef.current) {
+      pickBgmRef.current.pause();
+      pickBgmRef.current.currentTime = 0;
+    }
+    if (cardBgmRef.current) {
+      cardBgmRef.current.pause();
+      cardBgmRef.current.currentTime = 0;
+    }
+    if (mainBgmRef.current) {
+      mainBgmRef.current.play().catch((error) => {
+        console.log("Main BGM resume failed:", error);
+      });
+      console.log("Main BGM resumed");
+    }
+
     setIsGachaOpen(false);
     setCurrentPlayer(null);
     setSelectedPosition(null);
@@ -146,6 +288,18 @@ export default function Home() {
   const handleCancel = () => {
     // Reroll - get another player
     if (selectedPosition) {
+      // Stop card BGM and restart pick BGM for reroll
+      if (cardBgmRef.current && !cardBgmRef.current.paused) {
+        cardBgmRef.current.pause();
+        cardBgmRef.current.currentTime = 0;
+      }
+      if (pickBgmRef.current) {
+        pickBgmRef.current.currentTime = 0;
+        pickBgmRef.current.play().catch((error) => {
+          console.log("Pick BGM play failed:", error);
+        });
+      }
+
       const excludeIds = POSITIONS.map(
         (pos) =>
           roster[pos.toLowerCase() as keyof UserRoster] as Player | undefined,
@@ -166,6 +320,19 @@ export default function Home() {
   };
 
   const handleSummonAll = () => {
+    // Stop main BGM and play pick BGM
+    if (mainBgmRef.current && !mainBgmRef.current.paused) {
+      mainBgmRef.current.pause();
+      console.log("Main BGM stopped");
+    }
+    if (pickBgmRef.current) {
+      pickBgmRef.current.currentTime = 0;
+      pickBgmRef.current.play().catch((error) => {
+        console.log("Pick BGM play failed:", error);
+      });
+      console.log("Pick BGM started");
+    }
+
     // 빈 포지션들 찾기
     const emptyPositions = POSITIONS.filter(
       (pos) => !roster[pos.toLowerCase() as keyof UserRoster],
@@ -205,9 +372,37 @@ export default function Home() {
     setRoster((prev) => ({ ...prev, ...updates }));
     setIsMultiGachaOpen(false);
     setMultiPlayers(new Map());
+
+    // Stop pick/card BGMs and resume main BGM
+    if (pickBgmRef.current) {
+      pickBgmRef.current.pause();
+      pickBgmRef.current.currentTime = 0;
+    }
+    if (cardBgmRef.current) {
+      cardBgmRef.current.pause();
+      cardBgmRef.current.currentTime = 0;
+    }
+    if (mainBgmRef.current) {
+      mainBgmRef.current.play().catch((error) => {
+        console.log("Main BGM resume failed:", error);
+      });
+      console.log("Main BGM resumed");
+    }
   };
 
   const handleMultiReroll = () => {
+    // Stop card BGM and restart pick BGM for reroll
+    if (cardBgmRef.current && !cardBgmRef.current.paused) {
+      cardBgmRef.current.pause();
+      cardBgmRef.current.currentTime = 0;
+    }
+    if (pickBgmRef.current) {
+      pickBgmRef.current.currentTime = 0;
+      pickBgmRef.current.play().catch((error) => {
+        console.log("Pick BGM play failed:", error);
+      });
+    }
+
     // Reroll all positions
     const positions = Array.from(multiPlayers.keys());
     const excludeIds = POSITIONS.map(
@@ -296,6 +491,55 @@ export default function Home() {
   return (
     <LazyMotion features={domAnimation} strict>
       <div className="h-auto hextech-bg hexagon-pattern mb-20 md:mb-0">
+        {/* BGM Toggle Button - Fixed position */}
+        <motion.button
+          onClick={toggleBgmMute}
+          className="fixed top-4 right-4 z-50 p-3 rounded-full bg-lol-dark-lighter/80 border-2 border-lol-gold/50 hover:border-lol-gold hover:bg-lol-dark-lighter transition-all backdrop-blur-sm"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          title={isBgmMuted ? "Unmute BGM" : "Mute BGM"}
+        >
+          {isBgmMuted ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-lol-gold"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-lol-gold"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+              />
+            </svg>
+          )}
+        </motion.button>
+
         {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 py-12">
           {/* Title Section */}
@@ -527,6 +771,8 @@ export default function Home() {
           isOpen={isGachaOpen}
           onConfirm={handleConfirm}
           onCancel={handleCancel}
+          pickBgmRef={pickBgmRef}
+          cardBgmRef={cardBgmRef}
         />
 
         <GachaMultiModal
@@ -534,6 +780,8 @@ export default function Home() {
           isOpen={isMultiGachaOpen}
           onConfirm={handleMultiConfirm}
           onRerollAll={handleMultiReroll}
+          pickBgmRef={pickBgmRef}
+          cardBgmRef={cardBgmRef}
         />
 
         <ChampionshipCelebration

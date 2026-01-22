@@ -2,7 +2,7 @@
 
 import { Player, Position } from "@/types";
 import { m as motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface GachaMultiModalProps {
@@ -10,6 +10,8 @@ interface GachaMultiModalProps {
   isOpen: boolean;
   onConfirm: () => void;
   onRerollAll: () => void;
+  pickBgmRef: RefObject<HTMLAudioElement | null>;
+  cardBgmRef: RefObject<HTMLAudioElement | null>;
 }
 
 export default function GachaMultiModal({
@@ -17,6 +19,8 @@ export default function GachaMultiModal({
   isOpen,
   onConfirm,
   onRerollAll,
+  pickBgmRef,
+  cardBgmRef,
 }: GachaMultiModalProps) {
   const [stage, setStage] = useState<"loading" | "reveal">("loading");
   const [displayPlayers, setDisplayPlayers] = useState<Map<Position, Player>>(
@@ -46,12 +50,26 @@ export default function GachaMultiModal({
         if (prevPlayersKeyRef.current === currentKey) {
           setStage("reveal");
           setDisplayPlayers(new Map(players));
+
+          // Stop pick BGM and start card BGM when reveal animation starts
+          if (pickBgmRef.current && !pickBgmRef.current.paused) {
+            pickBgmRef.current.pause();
+            pickBgmRef.current.currentTime = 0;
+          }
+          if (cardBgmRef.current) {
+            cardBgmRef.current.currentTime = 0;
+            cardBgmRef.current.play().catch((error) => {
+              console.log("Card BGM play failed:", error);
+            });
+          }
         }
       }, 1600);
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+      };
     }
-  }, [isOpen, players]);
+  }, [isOpen, players, pickBgmRef, cardBgmRef]);
 
   if (!isOpen || players.size === 0) return null;
 

@@ -2,7 +2,7 @@
 
 import { Player } from "@/types";
 import { m as motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, RefObject } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface GachaModalProps {
@@ -10,6 +10,8 @@ interface GachaModalProps {
   isOpen: boolean;
   onConfirm: () => void;
   onCancel: () => void;
+  pickBgmRef: RefObject<HTMLAudioElement | null>;
+  cardBgmRef: RefObject<HTMLAudioElement | null>;
 }
 
 export default function GachaModal({
@@ -17,15 +19,19 @@ export default function GachaModal({
   isOpen,
   onConfirm,
   onCancel,
+  pickBgmRef,
+  cardBgmRef,
 }: GachaModalProps) {
   const [stage, setStage] = useState<
     "loading" | "nationality" | "league" | "reveal" | "show"
   >("loading");
   const [displayPlayer, setDisplayPlayer] = useState<Player | null>(null);
   const prevPlayerIdRef = useRef<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const { t, showWorldsAnimation } = useLanguage();
   const isWorldsWinner =
     player?.isWinner && player?.championshipLeague === "WORLDS";
+  const isFaker = player?.name === "Faker" && player?.position === "MID";
   // Use FIFA-style animation only if enabled
   const useFifaAnimation = showWorldsAnimation && isWorldsWinner;
 
@@ -46,6 +52,18 @@ export default function GachaModal({
         const timer1 = setTimeout(() => {
           if (prevPlayerIdRef.current === player.id) {
             setStage("nationality");
+
+            // Stop pick BGM and start card BGM when loading ends (no gap)
+            if (pickBgmRef.current && !pickBgmRef.current.paused) {
+              pickBgmRef.current.pause();
+              pickBgmRef.current.currentTime = 0;
+            }
+            if (cardBgmRef.current) {
+              cardBgmRef.current.currentTime = 0;
+              cardBgmRef.current.play().catch((error) => {
+                console.log("Card BGM play failed:", error);
+              });
+            }
           }
         }, 2560);
         const timer2 = setTimeout(() => {
@@ -62,6 +80,18 @@ export default function GachaModal({
           if (prevPlayerIdRef.current === player.id) {
             setStage("show");
             setDisplayPlayer(player);
+
+            // Play Faker audio when Faker is revealed
+            if (isFaker) {
+              if (!audioRef.current) {
+                audioRef.current = new Audio("/faker.mp3");
+                audioRef.current.volume = 0.3;
+              }
+              audioRef.current.currentTime = 0;
+              audioRef.current.play().catch((error) => {
+                console.log("Audio play failed:", error);
+              });
+            }
           }
         }, 6720);
 
@@ -76,12 +106,36 @@ export default function GachaModal({
         const timer1 = setTimeout(() => {
           if (prevPlayerIdRef.current === player.id) {
             setStage("reveal");
+
+            // Stop pick BGM and start card BGM when reveal animation starts
+            if (pickBgmRef.current && !pickBgmRef.current.paused) {
+              pickBgmRef.current.pause();
+              pickBgmRef.current.currentTime = 0;
+            }
+            if (cardBgmRef.current) {
+              cardBgmRef.current.currentTime = 0;
+              cardBgmRef.current.play().catch((error) => {
+                console.log("Card BGM play failed:", error);
+              });
+            }
           }
         }, 1600);
         const timer2 = setTimeout(() => {
           if (prevPlayerIdRef.current === player.id) {
             setStage("show");
             setDisplayPlayer(player);
+
+            // Play Faker audio when Faker is revealed
+            if (isFaker) {
+              if (!audioRef.current) {
+                audioRef.current = new Audio("/faker.mp3");
+                audioRef.current.volume = 0.3;
+              }
+              audioRef.current.currentTime = 0;
+              audioRef.current.play().catch((error) => {
+                console.log("Audio play failed:", error);
+              });
+            }
           }
         }, 2650); // 1600 + 950(animation) + 100(buffer) = 2650ms
 
@@ -91,7 +145,17 @@ export default function GachaModal({
         };
       }
     }
-  }, [isOpen, player, useFifaAnimation]);
+  }, [isOpen, player, useFifaAnimation, isFaker, pickBgmRef, cardBgmRef]);
+
+  // Cleanup audio on unmount
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   if (!isOpen || !player) return null;
 
@@ -108,7 +172,32 @@ export default function GachaModal({
           className="absolute inset-0 bg-black/90 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-        />
+        >
+          {/* Faker special background image */}
+          {isFaker && stage === "show" && (
+            <motion.div
+              className="absolute inset-0 flex items-center justify-center"
+              initial={{ opacity: 0, scale: 1.3 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                delay: 0.3,
+                duration: 1.5,
+                ease: "easeOut",
+              }}
+            >
+              <img
+                src="/faker.png"
+                alt="Faker"
+                className="w-full h-full object-cover opacity-30"
+                style={{
+                  mixBlendMode: "screen",
+                }}
+              />
+              {/* Golden glow overlay for Faker */}
+              <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/20 via-transparent to-yellow-400/10" />
+            </motion.div>
+          )}
+        </motion.div>
 
         {/* Modal Content */}
         <div className="relative z-10 w-full max-w-md mx-4">
