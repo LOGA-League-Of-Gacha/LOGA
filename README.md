@@ -107,16 +107,6 @@ _Share your dream team with other fans_
 
 ## 📦 Tech Stack
 
-npm run build
-
-# 프로덕션 서버 실행
-
-npm start
-
-```
-
-## 📦 Tech Stack
-
 <div align="center">
 
 | Category        | Technologies                                                                                                                                                              |
