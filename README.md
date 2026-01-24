@@ -1,8 +1,68 @@
-# ⚡ LOL Roster Gacha
+# ⚡ League of Gacha - LOL Pro Player Random Gacha Game
+
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-league--of--gacha.pages.dev-blue?style=for-the-badge)](https://league-of-gacha.pages.dev)
+[![Next.js](https://img.shields.io/badge/Next.js-16.1.2-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Lighthouse](https://img.shields.io/badge/Lighthouse-75%2F100-orange?style=for-the-badge&logo=lighthouse)](https://league-of-gacha.pages.dev)
+
+
+**🎮 Build Your Dream League of Legends Team | 롤 프로게이머 가챠 게임**
+
+[English](#english) | [한국어](#korean)
+
+![League of Gacha Demo](https://img.shields.io/badge/200%2B_Pro_Players-Faker_Deft_Rookie-gold?style=for-the-badge)
+![Tournaments](https://img.shields.io/badge/2013--2025-LCK_LPL_Worlds_MSI-red?style=for-the-badge)
+
+![Image](https://github.com/user-attachments/assets/6abd113a-3f95-4113-8b2b-2371c82ad249)
+
+</div>
+
+---
+
+## <a name="english"></a>🌟 What is League of Gacha?
+
+**League of Gacha** is an interactive web gacha game where you can summon legendary **League of Legends pro players** (2013-2025) and build your ultimate championship roster! Perfect for LOL esports fans aged 18-35.
+
+### 🎯 Key Features
+
+- 🃏 **Random Player Gacha** - FIFA-style card reveal animations
+- 🏆 **Championship Detection** - Special celebration when you complete real winning rosters (T1, DRX, EDG, etc.)
+- 🌍 **Bilingual Support** - English/Korean language toggle
+- 📊 **Player Stats** - Track wins, losses, and win rates
+- 🎨 **LOL Theme** - Official Hextech design with gold glow effects
+- 📱 **Community Sharing** - Share rosters and compete with friends
+- ⚡ **Lightning Fast** - Optimized with Next.js 16 and Cloudflare Pages
+
+### 🎮 How to Play
+
+1. Click position slots (TOP/JG/MID/ADC/SUP) or "Select One Player"
+2. Watch the FIFA-style card reveal animation
+3. Confirm or reroll until you're satisfied
+4. Complete all 5 positions to build your dream team
+5. Get special animations for championship rosters!
+
+### 🏆 Supported Tournaments
+
+**200+ Professional Players** from:
+
+- 🇰🇷 **LCK** (Korea) - Faker, Chovy, Keria
+- 🇨🇳 **LPL** (China) - Rookie, TheShy, Meiko
+- 🇪🇺 **LEC** (Europe) - Caps, Perkz, Rekkles
+- 🇺🇸 **LCS** (North America)
+- 🌍 **Worlds Championship** (2013-2025)
+- 🏅 **MSI** (Mid-Season Invitational)
+
+---
+
+## <a name="korean"></a>🇰🇷 리그 오브 가챠란?
 
 리그오브레전드 프로 선수 랜덤 가챠 게임! 당신만의 드림팀을 소환하고, 우승 로스터를 완성하세요!
 
 ## 🎮 Features
+
+### 주요 기능
 
 - **랜덤 선수 가챠**: FIFA 스타일의 카드 리빌 애니메이션으로 프로 선수를 랜덤하게 뽑기
 - **우승 로스터 감지**: 실제 우승팀 로스터를 완성하면 특별한 축하 애니메이션 표시
@@ -13,157 +73,298 @@
 - **인터랙티브 UI**: Framer Motion을 사용한 부드러운 애니메이션 효과
 - **반응형 디자인**: 모바일, 태블릿, 데스크톱 모두 지원
 
-## 🏆 지원하는 대회 데이터
+### 🎯 플레이 방법
 
-- **LCK** (2013-2025)
-- **LPL** (2013-2025)
-- **LEC** (2013-2025)
-- **LCS** (2013-2025)
-- **Worlds Championship** (2013-2025)
-- **MSI** (2015-2025)
-
-우승 및 준우승 로스터를 정확히 완성하면 특별한 애니메이션과 함께 축하 메시지가 표시됩니다!
-
-## ✨ 새로운 기능
-
-### 우승자 배지 개선
-
-- 왕관 아이콘에서 트로피 아이콘으로 변경
-- 카드 모서리에 걸치는 형태로 배치
-- 우승 대회 및 년도 정보 툴팁 표시
-- 골드 그라데이션 및 발광 효과
-
-### 다국어 지원
-
-- 우측 상단의 언어 전환 버튼으로 한글/영어 변경 가능
-- UI 텍스트, 버튼, 메시지 등 전체 번역
-- 로컬 스토리지에 언어 설정 저장
-
-### 공유 스토리지 솔루션
-
-- 로컬 스토리지와 Firebase 지원
-- 다른 사용자들과 로스터 실시간 공유
-- 좋아요 및 댓글 기능
-- 자세한 설정 방법은 [STORAGE_SOLUTION.md](STORAGE_SOLUTION.md) 참조
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18.0 이상
-- npm, yarn, pnpm 또는 bun
-
-### Installation
-
-```bash
-# 의존성 설치
-npm install
-
-# 개발 서버 실행
-npm run dev
-```
-
-브라우저에서 [http://localhost:3000](http://localhost:3000)을 열어 앱을 확인하세요.
-
-### Build
-
-```bash
-# 프로덕션 빌드
-npm run build
-
-# 프로덕션 서버 실행
-npm start
-```
-
-## 📦 Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **Animations**: Framer Motion
-- **Deployment**: Vercel (권장)
-
-## 🎨 Design Features
-
-### LOL 브랜드 컬러
-
-- **골드**: `#C89B3C` - 메인 강조 색상
-- **블루**: `#0AC8B9` - 서브 강조 색상
-- **다크**: `#010A13` - 배경 색상
-
-### 특수 효과
-
-- 헥스테크 육각형 패턴 배경
-- 골드 글로우 효과 (우승 관련 요소)
-- 챔피언십 펄스 애니메이션
-- FIFA 스타일 카드 리빌 애니메이션
-
-## 📂 Project Structure
-
-```
-lol-roster-gacha/
-├── app/                    # Next.js App Router 페이지
-│   ├── page.tsx           # 메인 가챠 페이지
-│   ├── community/         # 커뮤니티 페이지 (개발 예정)
-│   └── globals.css        # 글로벌 스타일 (LOL 테마)
-├── components/            # React 컴포넌트
-│   ├── PlayerCard.tsx     # 선수 카드 컴포넌트
-│   ├── GachaModal.tsx     # 가챠 애니메이션 모달
-│   └── ChampionshipCelebration.tsx  # 우승 축하 애니메이션
-├── data/                  # 데이터 파일
-│   ├── players.ts         # 선수 데이터 (2020-2024)
-│   └── championships.ts   # 우승 로스터 데이터
-└── types/                 # TypeScript 타입 정의
-    └── index.ts
-```
-
-## 🎯 How to Play
-
-1. **선수 소환**: 포지션 슬롯을 클릭하거나 "Summon Random Player" 버튼 클릭
+1. **선수 소환**: 포지션 슬롯을 클릭하거나 "선수 한 명 뽑기" 버튼 클릭
 2. **카드 확인**: FIFA 스타일 리빌 애니메이션으로 선수 확인
 3. **선택**: 마음에 들면 "Confirm", 다시 뽑으려면 "Reroll" 클릭
 4. **로스터 완성**: 5개 포지션 (TOP, JUNGLE, MID, ADC, SUPPORT) 모두 채우기
 5. **우승 확인**: 실제 우승 로스터를 완성하면 특별한 축하 애니메이션 등장!
 
-## 🌟 Upcoming Features
+---
 
-- [ ] 로스터 공유 기능 (URL 링크 생성)
-- [ ] 커뮤니티 페이지 (다른 사용자 로스터 보기)
-- [ ] 댓글 시스템
-- [ ] 우승 로스터 갤러리
-- [ ] 더 많은 선수 데이터 추가
-- [ ] 선수 검색 및 필터 기능
+## 📸 Screenshots
 
-## 📝 Data Sources
+<div align="center">
 
-현재 약 40-50명의 주요 선수 데이터가 포함되어 있습니다:
+### Main Gacha Interface
 
-- 2020-2024년 주요 대회 우승/준우승팀 선수
-- T1, Gen.G, JDG, BLG, G2 등 주요 팀
+_Summon legendary LOL pro players with FIFA-style animations_
 
-더 많은 선수 데이터를 추가하려면 [data/players.ts](data/players.ts) 파일을 수정하세요.
+### Championship Celebration
 
-## 🤝 Contributing
+_Complete real championship rosters for special effects_
 
-이 프로젝트에 기여하고 싶으신가요?
+### Community Sharing
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+_Share your dream team with other fans_
 
-## 📄 License
+</div>
 
-이 프로젝트는 교육 및 팬 프로젝트 목적으로 만들어졌습니다.
-Riot Games의 지적 재산권을 존중하며, 상업적 용도로 사용되지 않습니다.
-
-## 👏 Acknowledgments
-
-- **Riot Games** - League of Legends 브랜드 및 디자인
-- **Leaguepedia** - e-sports 데이터 참고
-- **원본 사이트** - 아이디어 영감 제공
+> 💡 **SEO Keywords**: league of legends gacha, lol pro player game, esports gacha game, 롤 가챠, 롤 프로게이머 게임, lck lpl worlds, faker deft rookie game
 
 ---
 
-Made with ⚡ by League of Legends fans
+## 📦 Tech Stack
+
+<div align="center">
+
+| Category        | Technologies                                                                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**   | ![Next.js](https://img.shields.io/badge/Next.js-16.1.2-black?logo=next.js) ![React](https://img.shields.io/badge/React-18-blue?logo=react)                                |
+| **Language**    | ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)                                                                                           |
+| **Styling**     | ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?logo=tailwind-css)                                                                                   |
+| **Animation**   | ![Framer Motion](https://img.shields.io/badge/Framer_Motion-LazyMotion-purple)                                                                                            |
+| **Backend**     | ![Firebase](https://img.shields.io/badge/Firebase-Community-orange?logo=firebase)                                                                                         |
+| **Analytics**   | ![Google Analytics](https://img.shields.io/badge/Google_Analytics-4-yellow?logo=google-analytics) ![Clarity](https://img.shields.io/badge/Microsoft_Clarity-enabled-blue) |
+| **Deployment**  | ![Cloudflare Pages](https://img.shields.io/badge/Cloudflare_Pages-Live-orange?logo=cloudflare)                                                                            |
+| **Performance** | ![Lighthouse](https://img.shields.io/badge/Lighthouse-75/100-orange?logo=lighthouse)                                                                                      |
+
+</div>
+
+## 🔍 SEO & Performance Optimization
+
+<details>
+<summary><b>🚀 Performance (Click to expand)</b></summary>
+
+### Lighthouse Score: 75/100
+
+- ⚡ **TBT Reduced**: -93% (1,700ms → 110ms)
+- 📊 **Speed Index**: -80% improvement
+- 🎯 **LazyMotion**: Tree-shaking enabled for Framer Motion
+- 📦 **Bundle Optimization**: Dynamic imports for heavy components
+
+</details>
+
+<details>
+<summary><b>🔎 Search Engine Optimization</b></summary>
+
+### Meta Tags & Structured Data
+
+- ✅ **Open Graph** - Optimized for social media sharing
+- ✅ **Twitter Cards** - Rich previews on Twitter/X
+- ✅ **Schema.org** - WebApplication, Organization, SearchAction
+- ✅ **Bilingual Keywords** - English + Korean keywords
+- ✅ **Sitemap.xml** - Auto-generated for all pages
+- ✅ **Robots.txt** - Configured for Google, Naver, Bing crawlers
+
+### GEO (Generative Engine Optimization)
+
+Optimized for AI search engines (ChatGPT, Gemini, Perplexity):
+- 📝 Comprehensive FAQ sections (English/Korean)
+- 🎯 Semantic HTML structure
+- 🤖 Natural language content for AI understanding
+- 🔑 Long-tail keywords: "lol pro player gacha", "롤 프로게이머 랜덤 가챠"
+
+### Search Console Setup
+
+After deployment, submit to:
+- [Google Search Console](https://search.google.com/search-console)
+- [Naver Search Advisor](https://searchadvisor.naver.com/) (Korean market)
+- [Bing Webmaster Tools](https://www.bing.com/webmasters)
+
+</details>
+
+<details>
+<summary><b>🎨 Design System</b></summary>
+
+### LOL Brand Colors
+
+- **Gold**: `#C89B3C` - Primary accent
+- **Blue**: `#0AC8B9` - Secondary accent
+- **Dark**: `#010A13` - Background
+
+### Special Effects
+
+- 🔷 Hextech hexagon pattern background
+- ✨ Gold glow effects for champions
+- 💫 Championship pulse animations
+- 🎴 FIFA-style card reveal transitions
+
+</details>
+
+---
+
+## 📂 Project Structure
+
+```
+
+lol-roster-gacha/
+├── app/ # Next.js App Router
+│ ├── page.tsx # 🎮 Main gacha game page
+│ ├── about/page.tsx # ℹ️ About page with FAQ
+│ ├── community/page.tsx # 👥 Community roster gallery
+│ └── my-page/page.tsx # 📊 User stats and history
+├── components/
+│ ├── GachaModal.tsx # 🎴 FIFA-style card reveal
+│ ├── PlayerCard.tsx # 🏆 Pro player card component
+│ ├── ChampionshipCelebration.tsx # 🎉 Victory animation
+│ └── Navigation.tsx # 🌍 Language toggle navigation
+├── contexts/
+│ └── LanguageContext.tsx # 🌐 Global i18n system
+├── data/
+│ ├── players-extended.ts # 📚 200+ player database
+│ └── championships.ts # 🏆 Championship rosters
+├── lib/
+│ ├── firebase.ts # 🔥 Firebase integration
+│ └── community-storage-v2.ts # 💾 Storage solution
+└── types/
+└── index.ts # 📝 TypeScript definitions
+
+````
+
+---
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/lol-roster-gacha.git
+cd lol-roster-gacha
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+````
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Environment Variables
+
+Create a `.env.local` file for Firebase (optional for community features):
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+# ... other Firebase config
+```
+
+### Build & Deploy
+
+```bash
+# Production build (static export for Cloudflare Pages)
+npm run build
+
+# Preview production build
+npm start
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+<details>
+<summary><b>📝 How to Contribute</b></summary>
+
+### 1. Add More Players
+
+Edit [data/players-extended.ts](data/players-extended.ts):
+
+```typescript
+{
+  id: "player-unique-id",
+  name: "Player Name",
+  team: "Team Name",
+  position: "MID",
+  nationality: "KR",
+  isWinner: true,
+  championshipYear: 2024,
+  championshipLeague: "WORLDS"
+}
+```
+
+### 2. Report Bugs
+
+Open an issue with:
+
+- 🐛 Bug description
+- 🔄 Steps to reproduce
+- 💻 Browser/device info
+
+### 3. Suggest Features
+
+We're looking for:
+
+- 🎨 UI/UX improvements
+- 🌐 More languages
+- 📊 Advanced statistics
+- 🎮 New game modes
+
+### 4. Submit Pull Requests
+
+```bash
+git checkout -b feature/YourFeature
+git commit -m "Add YourFeature"
+git push origin feature/YourFeature
+```
+
+Then open a PR with a clear description!
+
+</details>
+
+---
+
+## 🌟 Roadmap
+
+- [x] Random player gacha system
+- [x] Championship detection
+- [x] Community sharing
+- [x] Bilingual support (EN/KO)
+- [x] Analytics integration
+- [x] SEO/GEO optimization
+- [ ] 🎯 Player search & filters
+- [ ] 🏅 Achievement system
+- [ ] 💬 Live chat
+- [ ] 📱 Mobile app (PWA)
+- [ ] 🎮 Draft mode (5v5 team builder)
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+
+![Stars](https://img.shields.io/github/stars/yourusername/lol-roster-gacha?style=social)
+![Forks](https://img.shields.io/github/forks/yourusername/lol-roster-gacha?style=social)
+![Issues](https://img.shields.io/github/issues/yourusername/lol-roster-gacha)
+![License](https://img.shields.io/github/license/yourusername/lol-roster-gacha)
+
+**⭐ Star this repo if you enjoy the game!**
+
+</div>
+
+---
+
+## 📄 License
+
+This project is for **educational and fan purposes only**. Not affiliated with or endorsed by Riot Games.
+
+- ✅ Free to use and modify
+- ✅ Open source
+- ❌ Not for commercial use
+- 🎮 Respects Riot Games intellectual property
+
+---
+
+## 💖 Acknowledgments
+
+- **[Riot Games](https://www.riotgames.com/)** - League of Legends brand
+- **[Leaguepedia](https://lol.fandom.com/)** - Esports data reference
+- **LOL Esports Community** - For the inspiration
+
+---
+
+<div align="center">
+
+**Made with ⚡ by League of Legends fans**
+
+[🌐 Live Demo](https://league-of-gacha.pages.dev) | [📝 Report Bug](https://github.com/LOGA-League-Of-Gacha/LOGA/issues) | [✨ Request Feature](https://github.com/LOGA-League-Of-Gacha/LOGA/issues)
+
+</div>

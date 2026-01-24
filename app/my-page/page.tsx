@@ -89,9 +89,9 @@ export default function MyPage() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h1 className="text-4xl font-bold text-white mb-4">
             Weekly Statistics
-          </h2>
+          </h1>
           <p className="text-lol-light text-lg">
             Week {stats.weekNumber} - Stats reset every Monday
           </p>

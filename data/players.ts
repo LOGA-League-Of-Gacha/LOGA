@@ -241,7 +241,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "peanut_2023",
       name: "Peanut",
-      realName: "Han Wang-ho",
+      realName: "한왕호",
       position: "JUNGLE",
       year: 2023,
       teamShort: "GEN",
@@ -287,7 +287,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "kanavi_2023",
       name: "Kanavi",
-      realName: "Seo Jin-hyeok",
+      realName: "서진혁",
       position: "JUNGLE",
       year: 2023,
       teamShort: "JDG",
@@ -567,7 +567,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "scout_2022",
       name: "Scout",
-      realName: "Lee Ye-chan",
+      realName: "이예찬",
       position: "MID",
       year: 2022,
       teamShort: "EDG",
@@ -631,7 +631,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "peyz_2023",
       name: "Peyz",
-      realName: "Kim Su-hwan",
+      realName: "김수환",
       position: "ADC",
       year: 2023,
       teamShort: "GEN",
@@ -645,7 +645,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "peyz_2024",
       name: "Peyz",
-      realName: "Kim Su-hwan",
+      realName: "김수환",
       position: "ADC",
       year: 2024,
       teamShort: "GEN",
@@ -661,7 +661,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "ruler_2023",
       name: "Ruler",
-      realName: "Park Jae-hyuk",
+      realName: "박재혁",
       position: "ADC",
       year: 2023,
       teamShort: "JDG",
@@ -737,7 +737,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "viper_2022",
       name: "Viper",
-      realName: "Park Do-hyeon",
+      realName: "박도현",
       position: "ADC",
       year: 2022,
       teamShort: "EDG",
@@ -777,6 +777,8 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
       nationality: "South Korea",
       iso: "kr",
       isWinner: true,
+      championshipLeague: "WORLDS",
+      championshipYear: 2023,
     },
     {
       id: "keria_2024",
@@ -791,13 +793,15 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
       nationality: "South Korea",
       iso: "kr",
       isWinner: true,
+      championshipLeague: "WORLDS",
+      championshipYear: 2024,
     },
 
     // Gen.G
     {
       id: "delight_2023",
       name: "Delight",
-      realName: "Yoo Hwan-joong",
+      realName: "유환중",
       position: "SUPPORT",
       year: 2023,
       teamShort: "GEN",
@@ -811,7 +815,7 @@ const PLAYERS_DATA: Record<Position, Player[]> = {
     {
       id: "lehends_2024",
       name: "Lehends",
-      realName: "Son Si-woo",
+      realName: "손시우",
       position: "SUPPORT",
       year: 2024,
       teamShort: "GEN",
@@ -931,10 +935,10 @@ export const getPlayersByPosition = (position: Position): Player[] => {
 // 랜덤 선수 뽑기 (중복 방지, 확장 데이터 사용)
 export const getRandomPlayer = (
   position: Position,
-  excludeIds: string[] = []
+  excludeIds: string[] = [],
 ): Player => {
   const players = EXTENDED_PLAYERS.filter(
-    (p) => p.position === position && !excludeIds.includes(p.id)
+    (p) => p.position === position && !excludeIds.includes(p.id),
   );
   const randomIndex = Math.floor(Math.random() * players.length);
   return players[randomIndex];

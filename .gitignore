@@ -20,6 +20,9 @@
 # production
 /build
 
+# performance optimization docs (local only)
+PERFORMANCE_OPTIMIZATION.md
+
 # misc
 .DS_Store
 *.pem
@@ -39,3 +42,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.serena
