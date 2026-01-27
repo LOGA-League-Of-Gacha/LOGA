@@ -310,4 +310,8 @@ export async function GET(request: Request) {
         height: 630,
       }
     );
+  } catch (e) {
+    console.error(e);
+    return new Response("Failed to generate image", { status: 500 });
+  }
 }
