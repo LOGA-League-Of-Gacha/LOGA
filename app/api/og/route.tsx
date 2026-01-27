@@ -88,12 +88,11 @@ export async function GET(request: Request) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#091428", // Solid color only
+            backgroundColor: "#091428",
             color: "white",
-            // fontFamily removed - letting system default handle it
           }}
         >
-          {/* Title */}
+          {/* Title - Static Block */}
           <div
             style={{
               display: "flex",
@@ -106,7 +105,7 @@ export async function GET(request: Request) {
             LEAGUE OF GACHA
           </div>
 
-          {/* Cards Container */}
+          {/* Cards Container - Flex Row */}
           <div
             style={{
               display: "flex",
@@ -117,6 +116,7 @@ export async function GET(request: Request) {
           >
             {POSITIONS.map((pos, index) => {
               const player = rosterPlayers[pos];
+              // Margin-right instead of gap
               const marginRight = index < POSITIONS.length - 1 ? 20 : 0;
 
               if (!player) {
@@ -149,14 +149,14 @@ export async function GET(request: Request) {
               const isWinner =
                 player.isWinner && player.championshipLeague === "WORLDS";
               const borderColor = isWinner
-                ? "#FFD700" // Gold
+                ? "#FFD700"
                 : player.teamColor || "#C8AA6E";
 
               return (
                 <div
                   key={pos}
                   style={{
-                    display: "flex",
+                    display: "flex", // Required for Satori
                     flexDirection: "column",
                     width: 200,
                     height: 300,
@@ -164,33 +164,32 @@ export async function GET(request: Request) {
                     borderRadius: 15,
                     border: `4px solid ${borderColor}`,
                     marginRight: marginRight,
-                    // valid simple relative positioning
-                    position: "relative",
+                    justifyContent: "space-between", // Distribute content vertically
+                    padding: 15,
                   }}
                 >
-                  {/* Position Label (Flow instead of Absolute if possible, but Absolute is nicer) */}
-                  {/* Trying simple flow layout for max safety this time */}
+                  {/* Top: Position (Flow layout) */}
                   <div
                     style={{
                       display: "flex",
-                      paddingTop: 10,
-                      paddingLeft: 15,
                       fontSize: 12,
                       fontWeight: "bold",
                       color: isWinner ? "#FFD700" : "#C8AA6E",
+                      width: "100%",
                     }}
                   >
                     {player.position}
                   </div>
 
-                  {/* Player Name */}
+                  {/* Middle: Name & Nationality (Flow layout) */}
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      flex: 1,
                       alignItems: "center",
                       justifyContent: "center",
+                      width: "100%",
+                      flex: 1, // Take available space
                     }}
                   >
                     <div
@@ -215,15 +214,15 @@ export async function GET(request: Request) {
                     </div>
                   </div>
 
-                  {/* Team & Year Badge */}
+                  {/* Bottom: Team & Year (Flow layout) */}
                   <div
                     style={{
                       display: "flex",
+                      flexDirection: "row",
                       width: "100%",
                       justifyContent: "space-between",
                       alignItems: "center",
-                      padding: "15px",
-                      backgroundColor: "rgba(0,0,0,0.3)",
+                      marginTop: 10,
                     }}
                   >
                     <div
@@ -234,7 +233,6 @@ export async function GET(request: Request) {
                         fontSize: 12,
                         color: "white",
                         fontWeight: "bold",
-                        whiteSpace: "nowrap",
                       }}
                     >
                       {player.teamShort}
@@ -256,8 +254,8 @@ export async function GET(request: Request) {
 
           <div
             style={{
-              position: "absolute",
-              bottom: 20,
+              display: "flex",
+              marginTop: 20,
               color: "#6b7280",
               fontSize: 16,
             }}
