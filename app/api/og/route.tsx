@@ -88,8 +88,8 @@ export async function GET(request: Request) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "navy",
-            padding: "40px",
+            background: "linear-gradient(135deg, #010a13 0%, #0a1428 50%, #010a13 100%)",
+            padding: "50px",
           }}
         >
           {/* Championship Badge (if exists) */}
@@ -97,13 +97,15 @@ export async function GET(request: Request) {
             <div
               style={{
                 display: "flex",
-                fontSize: 28,
+                fontSize: 32,
                 fontWeight: "bold",
-                color: "gold",
-                marginBottom: 20,
-                padding: "10px 20px",
-                border: "3px solid gold",
-                borderRadius: 10,
+                color: "#010a13",
+                backgroundColor: "#c89b3c",
+                marginBottom: 25,
+                padding: "12px 30px",
+                border: "4px solid #ffd700",
+                borderRadius: 12,
+                boxShadow: "0 0 30px rgba(200, 155, 60, 0.6)",
               }}
             >
               🏆 {String(championship)} CHAMPION
@@ -114,10 +116,15 @@ export async function GET(request: Request) {
           <div
             style={{
               display: "flex",
-              fontSize: 48,
+              fontSize: 56,
               fontWeight: "bold",
-              color: "gold",
-              marginBottom: 40,
+              background: "linear-gradient(135deg, #c89b3c 0%, #ffd700 50%, #c89b3c 100%)",
+              backgroundClip: "text",
+              color: "transparent",
+              marginBottom: 45,
+              textTransform: "uppercase",
+              letterSpacing: "2px",
+              textShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
             }}
           >
             MY LEGENDARY ROSTER
@@ -128,7 +135,7 @@ export async function GET(request: Request) {
             style={{
               display: "flex",
               flexDirection: "row",
-              gap: 16,
+              gap: 20,
             }}
           >
             {POSITIONS.map((pos) => {
@@ -140,26 +147,38 @@ export async function GET(request: Request) {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    width: 180,
-                    height: 280,
-                    backgroundColor: player ? "darkslateblue" : "dimgray",
-                    border: player ? "4px solid gold" : "4px solid silver",
-                    borderRadius: 12,
-                    padding: 16,
+                    width: 190,
+                    height: 300,
+                    background: player
+                      ? "linear-gradient(180deg, #1e2328 0%, #0a1428 100%)"
+                      : "linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%)",
+                    border: player ? "5px solid #c89b3c" : "5px solid #5b5a56",
+                    borderRadius: 16,
+                    padding: 18,
+                    boxShadow: player
+                      ? "0 8px 24px rgba(200, 155, 60, 0.4), inset 0 1px 0 rgba(200, 155, 60, 0.2)"
+                      : "0 8px 16px rgba(0, 0, 0, 0.3)",
                   }}
                 >
                   {/* Position Badge */}
                   <div
                     style={{
                       display: "flex",
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: "bold",
-                      color: "white",
-                      backgroundColor: player ? "gold" : "gray",
-                      padding: "6px 12px",
-                      borderRadius: 6,
-                      marginBottom: 16,
+                      color: player ? "#0a1428" : "#f0e6d2",
+                      background: player
+                        ? "linear-gradient(135deg, #c89b3c 0%, #ffd700 100%)"
+                        : "#5b5a56",
+                      padding: "8px 14px",
+                      borderRadius: 8,
+                      marginBottom: 20,
                       justifyContent: "center",
+                      textTransform: "uppercase",
+                      letterSpacing: "1px",
+                      boxShadow: player
+                        ? "0 4px 12px rgba(200, 155, 60, 0.4)"
+                        : "0 2px 8px rgba(0, 0, 0, 0.3)",
                     }}
                   >
                     {pos}
@@ -178,11 +197,13 @@ export async function GET(request: Request) {
                       {/* Player Name */}
                       <div
                         style={{
-                          fontSize: 28,
+                          fontSize: 32,
                           fontWeight: "bold",
-                          color: "white",
-                          marginBottom: 12,
+                          color: "#f0e6d2",
+                          marginBottom: 14,
                           textAlign: "center",
+                          textShadow: "0 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(200, 155, 60, 0.3)",
+                          letterSpacing: "0.5px",
                         }}
                       >
                         {player.name}
@@ -191,9 +212,10 @@ export async function GET(request: Request) {
                       {/* Nationality */}
                       <div
                         style={{
-                          fontSize: 18,
-                          color: "lightgray",
-                          marginBottom: 16,
+                          fontSize: 20,
+                          color: "#a09b8c",
+                          marginBottom: 18,
+                          textShadow: "0 2px 4px rgba(0, 0, 0, 0.6)",
                         }}
                       >
                         {player.nationality}
@@ -203,9 +225,11 @@ export async function GET(request: Request) {
                       <div
                         style={{
                           display: "flex",
-                          fontSize: 16,
-                          color: "gold",
+                          fontSize: 18,
+                          color: "#c89b3c",
                           fontWeight: "bold",
+                          textShadow: "0 2px 6px rgba(0, 0, 0, 0.7)",
+                          letterSpacing: "0.5px",
                         }}
                       >
                         {player.teamShort} • {player.year}
@@ -218,8 +242,9 @@ export async function GET(request: Request) {
                         flex: 1,
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: 60,
-                        color: "silver",
+                        fontSize: 72,
+                        color: "#5b5a56",
+                        opacity: 0.5,
                       }}
                     >
                       ?
@@ -234,9 +259,12 @@ export async function GET(request: Request) {
           <div
             style={{
               display: "flex",
-              fontSize: 20,
-              color: "lightgray",
-              marginTop: 40,
+              fontSize: 22,
+              color: "#c89b3c",
+              marginTop: 45,
+              fontWeight: "600",
+              letterSpacing: "1px",
+              textShadow: "0 2px 8px rgba(0, 0, 0, 0.8)",
             }}
           >
             leagueofgacha.com
