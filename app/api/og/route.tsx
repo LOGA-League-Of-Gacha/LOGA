@@ -86,34 +86,192 @@ export async function GET(request: Request) {
             width: "100%",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start",
+            alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "white",
-            padding: "50px",
+            backgroundColor: "#091428",
+            backgroundImage:
+              "radial-gradient(circle at center, #1a2c4e 0%, #091428 100%)",
+            color: "white",
+            fontFamily: "sans-serif",
           }}
         >
-          <div style={{ fontSize: 60, marginBottom: 50, color: "black" }}>
-            ROSTER CHECK MODE
+          {/* Title */}
+          <div
+            style={{
+              display: "flex",
+              marginBottom: 40,
+              fontSize: 32,
+              fontWeight: "bold",
+              color: "#C8AA6E",
+            }}
+          >
+            LEAGUE OF GACHA
           </div>
-          {POSITIONS.map((pos) => {
-            const player = rosterPlayers[pos];
-            return (
-              <div
-                key={pos}
-                style={{
-                  fontSize: 40,
-                  marginBottom: 10,
-                  color: "black",
-                  display: "flex",
-                }}
-              >
-                <span style={{ fontWeight: "bold", marginRight: 20 }}>
-                  {pos}:
-                </span>
-                <span>{player ? player.name : "Unselected"}</span>
-              </div>
-            );
-          })}
+
+          {/* Cards Container - Using margin instead of gap for safety */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {POSITIONS.map((pos, index) => {
+              const player = rosterPlayers[pos];
+              // Add margin to all except the last item
+              const marginRight = index < POSITIONS.length - 1 ? 20 : 0;
+
+              if (!player) {
+                // Empty Slot
+                return (
+                  <div
+                    key={pos}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: 200,
+                      height: 300,
+                      backgroundColor: "#1e2328",
+                      border: "2px dashed #485363",
+                      borderRadius: 15,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: marginRight,
+                    }}
+                  >
+                    <div style={{ color: "#485363", fontSize: 20 }}>?</div>
+                    <div
+                      style={{
+                        color: "#485363",
+                        fontSize: 14,
+                        marginTop: 5,
+                      }}
+                    >
+                      {pos}
+                    </div>
+                  </div>
+                );
+              }
+
+              // Player Card
+              const isWinner =
+                player.isWinner && player.championshipLeague === "WORLDS";
+              const borderColor = isWinner
+                ? "#FFD700"
+                : player.teamColor || "#C8AA6E";
+
+              return (
+                <div
+                  key={pos}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    width: 200,
+                    height: 300,
+                    backgroundColor: "#1e2328",
+                    borderRadius: 15,
+                    border: `4px solid ${borderColor}`,
+                    marginRight: marginRight,
+                    position: "relative",
+                  }}
+                >
+                  {/* Position Label */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 15,
+                      left: 15,
+                      fontSize: 12,
+                      fontWeight: "bold",
+                      color: isWinner ? "#FFD700" : "#C8AA6E",
+                    }}
+                  >
+                    {player.position}
+                  </div>
+
+                  {/* Player Name */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      flex: 1,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginTop: 20,
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontSize: 24,
+                        fontWeight: "900",
+                        color: "white",
+                        textAlign: "center",
+                      }}
+                    >
+                      {player.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 14,
+                        opacity: 0.7,
+                        marginTop: 5,
+                        color: "#F0E6D2",
+                      }}
+                    >
+                      {player.nationality}
+                    </div>
+                  </div>
+
+                  {/* Team & Year Badge */}
+                  <div
+                    style={{
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "15px",
+                      backgroundColor: "rgba(0,0,0,0.3)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        backgroundColor: player.teamColor || "#333",
+                        padding: "4px 8px",
+                        borderRadius: 4,
+                        fontSize: 12,
+                        color: "white",
+                        fontWeight: "bold",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {player.teamShort}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 20,
+                        fontWeight: "bold",
+                        color: isWinner ? "#FFD700" : "#C8AA6E",
+                      }}
+                    >
+                      {player.year}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div
+            style={{
+              position: "absolute",
+              bottom: 20,
+              color: "#6b7280",
+              fontSize: 16,
+            }}
+          >
+            leagueofgacha.com
+          </div>
         </div>
       ),
       {
