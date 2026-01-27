@@ -84,84 +84,94 @@ export async function GET(request: Request) {
           style={{
             height: "100%",
             width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#091428", // Restore Dark BG
-            color: "white", // Restore White Text
+            display: "flex", // Keep root flex
+            backgroundColor: "white", // SAFETY: Root is white
           }}
         >
-          {/* Title */}
+          {/* WRAPPER DIV: Forces Dark Background */}
           <div
             style={{
               display: "flex",
-              marginBottom: 40,
-              fontSize: 32,
-              fontWeight: "bold",
-              color: "#C8AA6E", // Restore Gold Title
-            }}
-          >
-            LEAGUE OF GACHA
-          </div>
-
-          {/* Cards Container - Flex Row */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
+              height: "100%",
+              width: "100%",
+              flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              width: "100%",
+              backgroundColor: "#1e2328", // Try slightly lighter dark first
+              color: "white",
             }}
           >
-            {POSITIONS.map((pos, index) => {
-              const player = rosterPlayers[pos];
-              const marginRight = index < POSITIONS.length - 1 ? 20 : 0;
+            {/* Title */}
+            <div
+              style={{
+                display: "flex",
+                marginBottom: 40,
+                fontSize: 32,
+                fontWeight: "bold",
+                color: "#C8AA6E",
+              }}
+            >
+              LEAGUE OF GACHA
+            </div>
 
-              return (
-                <div
-                  key={pos}
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: 200,
-                    height: 300,
-                    backgroundColor: "#1e2328", // Dark Card BG
-                    border: "3px solid #C8AA6E", // Gold Border
-                    borderRadius: 15,
-                    marginRight: marginRight,
-                    alignItems: "center",
-                    justifyContent: "center",
-                    padding: 10,
-                  }}
-                >
-                  <div style={{ fontSize: 16, fontWeight: "bold", marginBottom: 10, color: "#C8AA6E" }}>
-                    {pos}
-                  </div>
-                  
-                  {player ? (
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <div style={{ fontSize: 24, fontWeight: '900', textAlign: 'center', color: "white" }}>
-                        {player.name}
-                      </div>
-                      <div style={{ fontSize: 14, color: "#F0E6D2", marginTop: 5 }}>
-                        {player.nationality}
-                      </div>
-                      <div style={{ fontSize: 14, color: "#C8AA6E", marginTop: 10, fontWeight: "bold" }}>
-                        {player.teamShort} • {player.year}
-                      </div>
+            {/* Cards Container - Flex Row */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              {POSITIONS.map((pos, index) => {
+                const player = rosterPlayers[pos];
+                const marginRight = index < POSITIONS.length - 1 ? 20 : 0;
+
+                return (
+                  <div
+                    key={pos}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      width: 200,
+                      height: 300,
+                      backgroundColor: "black", // Deep dark card
+                      border: "3px solid #C8AA6E",
+                      borderRadius: 15,
+                      marginRight: marginRight,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 10,
+                    }}
+                  >
+                    <div style={{ fontSize: 16, fontWeight: "bold", marginBottom: 10, color: "#C8AA6E" }}>
+                      {pos}
                     </div>
-                  ) : (
-                    <div style={{ fontSize: 20, color: "#485363" }}>?</div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          
-          <div style={{ marginTop: 20, fontSize: 16, display: 'flex', color: "#6b7280" }}>
-            leagueofgacha.com
+                    
+                    {player ? (
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div style={{ fontSize: 24, fontWeight: '900', textAlign: 'center', color: "white" }}>
+                          {player.name}
+                        </div>
+                        <div style={{ fontSize: 14, color: "#F0E6D2", marginTop: 5 }}>
+                          {player.nationality}
+                        </div>
+                        <div style={{ fontSize: 14, color: "#C8AA6E", marginTop: 10, fontWeight: "bold" }}>
+                          {player.teamShort} • {player.year}
+                        </div>
+                      </div>
+                    ) : (
+                      <div style={{ fontSize: 20, color: "#485363" }}>?</div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+            
+            <div style={{ marginTop: 20, fontSize: 16, display: 'flex', color: "#6b7280" }}>
+              leagueofgacha.com
+            </div>
           </div>
         </div>
       ),
