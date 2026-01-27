@@ -83,23 +83,6 @@
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-### Main Gacha Interface
-
-_Summon legendary LOL pro players with FIFA-style animations_
-
-### Championship Celebration
-
-_Complete real championship rosters for special effects_
-
-### Community Sharing
-
-_Share your dream team with other fans_
-
-</div>
 
 > 💡 **SEO Keywords**: league of legends gacha, lol pro player game, esports gacha game, 롤 가챠, 롤 프로게이머 게임, lck lpl worlds, faker deft rookie game
 
