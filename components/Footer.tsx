@@ -36,6 +36,14 @@ export default function Footer() {
                   내 전적
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="hover:text-lol-gold transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
 

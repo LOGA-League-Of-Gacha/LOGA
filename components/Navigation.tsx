@@ -58,8 +58,11 @@ export default function Navigation() {
               </div>
               {/* Desktop Navigation */}
               <div className="hidden md:flex gap-4 items-center">
-                {/* Language Toggle */}
-
+                <Link href="/about">
+                  <button className="px-4 py-2 rounded-lg bg-lol-dark-lighter border border-lol-gold/30 text-lol-light hover:text-lol-gold hover:border-lol-gold/60 transition-all">
+                    About
+                  </button>
+                </Link>
                 <Link href="/my-page">
                   <button className="px-4 py-2 rounded-lg bg-lol-dark-lighter border border-lol-gold/30 text-lol-light hover:text-lol-gold hover:border-lol-gold/60 transition-all">
                     {t("myPage")}
