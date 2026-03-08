@@ -255,6 +255,12 @@ export default function RootLayout({
           hrefLang="x-default"
           href="https://leagueofgacha.com/"
         />
+        {/* Google AdSense - placed in head per Google's recommendation */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6192776695660842"
+          crossOrigin="anonymous"
+        ></script>
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -288,12 +294,6 @@ export default function RootLayout({
           <Navigation />
           <main>{children}</main>
         </LanguageProvider>
-        <script
-          async
-          defer
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6192776695660842"
-          crossOrigin="anonymous"
-        ></script>
       </body>
     </html>
   );

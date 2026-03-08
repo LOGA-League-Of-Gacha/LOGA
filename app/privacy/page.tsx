@@ -147,22 +147,94 @@ export default function PrivacyPage() {
                   </a>
                 </li>
                 <li>
-                  <strong className="text-white">Google Analytics</strong> (if
-                  applicable): For website analytics and usage tracking
+                  <strong className="text-white">Google Analytics:</strong> For
+                  website analytics and usage tracking. View Google's privacy
+                  policy at{" "}
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    policies.google.com/privacy
+                  </a>
+                </li>
+                <li>
+                  <strong className="text-white">Microsoft Clarity:</strong>{" "}
+                  For user behavior analytics and session recording. View
+                  Microsoft's privacy policy at{" "}
+                  <a
+                    href="https://privacy.microsoft.com/privacystatement"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    privacy.microsoft.com
+                  </a>
                 </li>
               </ul>
             </section>
 
             <section>
               <h3 className="text-xl font-bold text-white mb-3">
-                5. Cookies and Tracking
+                5. Advertising and Cookies
               </h3>
-              <p className="leading-relaxed">
-                We use browser local storage instead of traditional cookies to
-                store user preferences and session data. This data remains on
-                your device and is not transmitted to third parties. You can
-                clear this data at any time through your browser settings.
-              </p>
+              <div className="space-y-3 leading-relaxed">
+                <p>
+                  <strong className="text-white">Google AdSense:</strong> We
+                  use Google AdSense to display advertisements on our website.
+                  Google AdSense uses cookies and web beacons to serve ads
+                  based on your prior visits to our website or other websites
+                  on the Internet. Google's use of advertising cookies enables
+                  it and its partners to serve ads based on your visit to our
+                  site and/or other sites on the Internet.
+                </p>
+                <p>
+                  You may opt out of personalized advertising by visiting{" "}
+                  <a
+                    href="https://www.google.com/settings/ads"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    Google Ads Settings
+                  </a>{" "}
+                  or by visiting{" "}
+                  <a
+                    href="https://www.aboutads.info/choices/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    aboutads.info/choices
+                  </a>
+                  . For more information on how Google uses data when you use
+                  our partners' sites or apps, visit{" "}
+                  <a
+                    href="https://policies.google.com/technologies/partner-sites"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    policies.google.com/technologies/partner-sites
+                  </a>
+                  .
+                </p>
+                <p>
+                  <strong className="text-white">Browser Local Storage:</strong>{" "}
+                  In addition to advertising cookies used by Google AdSense, we
+                  use browser local storage to store your preferences and
+                  session data. This data remains on your device and is not
+                  transmitted to our servers. You can clear this data at any
+                  time through your browser settings.
+                </p>
+                <p>
+                  <strong className="text-white">Analytics Cookies:</strong>{" "}
+                  Google Analytics may set cookies to understand how visitors
+                  interact with our site. These cookies collect information in
+                  an aggregated, anonymous form.
+                </p>
+              </div>
             </section>
 
             <section>
@@ -235,10 +307,34 @@ export default function PrivacyPage() {
               <h3 className="text-xl font-bold text-white mb-3">
                 11. Contact Us
               </h3>
-              <p className="leading-relaxed">
-                If you have any questions about this Privacy Policy, please
-                contact us through the Community page or by visiting our GitHub
-                repository.
+              <p className="leading-relaxed mb-3">
+                If you have any questions about this Privacy Policy or our data
+                practices, please contact us:
+              </p>
+              <ul className="list-disc list-inside ml-4 space-y-2 leading-relaxed">
+                <li>
+                  Via our{" "}
+                  <a
+                    href="/contact"
+                    className="text-lol-gold hover:underline"
+                  >
+                    Contact page
+                  </a>
+                </li>
+                <li>
+                  Via our{" "}
+                  <a
+                    href="https://github.com/yongchane/LOG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lol-gold hover:underline"
+                  >
+                    GitHub repository
+                  </a>
+                </li>
+              </ul>
+              <p className="leading-relaxed mt-3">
+                We will respond to your inquiry within a reasonable timeframe.
               </p>
             </section>
 
